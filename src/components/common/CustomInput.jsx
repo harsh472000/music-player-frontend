@@ -1,60 +1,3 @@
-// import React, { useState } from "react";
-// import { TextField, IconButton, InputAdornment } from "@mui/material";
-// import { Visibility, VisibilityOff } from "@mui/icons-material";
-
-// const CustomInput = ({
-//   label,
-//   type = "text",
-//   value,
-//   onChange,
-//   error = false,
-//   helperText = "",
-//   fullWidth = true,
-//   variant = "outlined",
-//   ...props
-// }) => {
-//   const [showPassword, setShowPassword] = useState(false);
-
-//   const handleClickShowPassword = () => {
-//     setShowPassword(!showPassword);
-//   };
-
-//   const handleMouseDownPassword = (event) => {
-//     event.preventDefault();
-//   };
-
-//   return (
-//     <TextField
-//       label={label}
-//       type={type === "password" && !showPassword ? "password" : "text"}
-//       value={value}
-//       onChange={onChange}
-//       error={error}
-//       helperText={helperText}
-//       fullWidth={fullWidth}
-//       variant={variant}
-//       InputProps={{
-//         endAdornment:
-//           type === "password" ? (
-//             <InputAdornment position="end">
-//               <IconButton
-//                 onClick={handleClickShowPassword}
-//                 onMouseDown={handleMouseDownPassword}
-//                 edge="end"
-//               >
-//                 {showPassword ? <VisibilityOff /> : <Visibility />}
-//               </IconButton>
-//             </InputAdornment>
-//           ) : null,
-//       }}
-//       {...props}
-//     />
-//   );
-// };
-
-// export default CustomInput;
-
-
 import React, { useState } from "react";
 import {
   TextField,
@@ -93,13 +36,12 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     },
   },
   "& .MuiInputBase-input": {
-    padding: "0px 12px", // Remove vertical padding, keep horizontal
-    height: "100%", // Take full height of container
+    padding: "0px 12px", 
+    height: "100%",
     display: "flex",
-    alignItems: "center", // Center text vertically
+    alignItems: "center",
   },
   "& .MuiInputLabel-root": {
-    // Center the label/placeholder vertically
     top: "50%",
     left: "3%",
     transform: "translateY(-50%)",

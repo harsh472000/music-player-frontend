@@ -1,4 +1,4 @@
-import { AuthSidebarImageSvg, musicSidebarImage } from "../../utils/images";
+import { musicSidebarImage } from "../../utils/images";
 import { StyledRightBoxWrapper } from "./StyledComponent";
 
 const RightIntro = () => {

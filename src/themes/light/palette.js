@@ -105,34 +105,7 @@ const Palette = (mode) => {
         light: "#F8C9D2",
         lighter: "#FDEDF0",
       },
-      green: {
-        darker: "#176448",
-        dark: "#2D9F75",
-        base: "#38C793",
-        light: "#CBF5E5",
-        lighter: "#EFFAF6",
-      },
-      purple: {
-        darker: "#2B1664",
-        dark: "#5A36BF",
-        base: "#6E3FF3",
-        light: "#CAC2FF",
-        lighter: "#EEEBFF",
-      },
-      pink: {
-        darker: "#620F6C",
-        dark: "#9C23A9",
-        base: "#E255F2",
-        light: "#F9C2FF",
-        lighter: "#FDEBFF",
-      },
-      teal: {
-        darker: "#164564",
-        dark: "#1F87AD",
-        base: "#35B9E9",
-        light: "#C2EFFF",
-        lighter: "#EBFAFF",
-      },
+    
       state: {
         success: "#38C793",
         warn: "#F17B2C",

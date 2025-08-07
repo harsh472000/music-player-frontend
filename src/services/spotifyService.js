@@ -25,25 +25,6 @@ const getAccessToken = async () => {
 };
 
 // Search for tracks
-// export const searchTracks = async (query, limit = 10) => {
-//   try {
-//     const token = await getAccessToken();
-//     const response = await axios.get(`${SPOTIFY_API_URL}/search`, {
-//       params: {
-//         q: query,
-//         type: "track",
-//         limit: limit,
-//       },
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-//     return response.data.tracks.items;
-//   } catch (error) {
-//     console.error("Error searching tracks:", error);
-//     throw new Error("Failed to search tracks");
-//   }
-// };
 
 export const searchTracks = async (query, limit = 10, offset = 0) => {
   try {

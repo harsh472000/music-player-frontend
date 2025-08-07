@@ -42,20 +42,20 @@ const Header = () => {
 
   return (
     <AppBar 
-      position="fixed"  // Changed from 'static' to 'fixed'
+      position="fixed" 
       sx={{ 
         backgroundColor: "background.paper",
-        zIndex: theme.zIndex.drawer + 1,  // Ensure header stays above other content
-        boxShadow: "0 2px 4px rgba(0,0,0,0.1)"  // Optional: Add subtle shadow
+        zIndex: theme.zIndex.drawer + 1,
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)" 
       }}
     >
       <Toolbar 
         sx={{ 
           justifyContent: "space-between",
-          minHeight: "64px"  // Ensure consistent height
+          minHeight: "64px" 
         }}
       >
-        {/* Left side - App Name */}
+        {/* Left side */}
         <Typography 
           variant="h6" 
           component={Link} 
@@ -65,16 +65,16 @@ const Header = () => {
             color: "text.primary",
             fontWeight: "bold",
             "&:hover": {
-              color: "primary.main"  // Add hover effect
+              color: "primary.main"
             }
           }}
         >
           Music App
         </Typography>
 
-        {/* Right side - Navigation and Avatar */}
+        {/* Right side  */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          {/* Navigation Links - Only show when user is logged in */}
+          {/* Navigation Links*/}
           {userData && (
             <>
               <Button 
