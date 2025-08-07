@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Card,
   CardContent,
@@ -10,8 +10,15 @@ import {
   Divider,
   Button,
   Tooltip,
-} from '@mui/material';
-import { Add, Edit, Delete, MusicNote, PlaylistAdd, Close } from '@mui/icons-material';
+} from "@mui/material";
+import {
+  Add,
+  Edit,
+  Delete,
+  MusicNote,
+  PlaylistAdd,
+  Close,
+} from "@mui/icons-material";
 
 const PlaylistCard = ({
   playlist,
@@ -24,12 +31,12 @@ const PlaylistCard = ({
   return (
     <Card
       sx={{
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        transition: 'transform 0.2s, box-shadow 0.2s',
-        '&:hover': {
-          transform: 'translateY(-4px)',
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        transition: "transform 0.2s, box-shadow 0.2s",
+        "&:hover": {
+          transform: "translateY(-4px)",
           boxShadow: theme.shadows[6],
         },
       }}
@@ -37,9 +44,9 @@ const PlaylistCard = ({
       <CardContent sx={{ flexGrow: 1 }}>
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
             mb: 1,
           }}
         >
@@ -49,17 +56,21 @@ const PlaylistCard = ({
             component="div"
             sx={{
               fontWeight: 500,
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              maxWidth: '70%',
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              maxWidth: "70%",
             }}
           >
             {playlist.name}
           </Typography>
           <Box>
             <Tooltip title="Edit playlist">
-              <IconButton size="small" onClick={() => onEdit(playlist)} sx={{ mr: 0.5 }}>
+              <IconButton
+                size="small"
+                onClick={() => onEdit(playlist)}
+                sx={{ mr: 0.5 }}
+              >
                 <Edit fontSize="small" />
               </IconButton>
             </Tooltip>
@@ -77,10 +88,10 @@ const PlaylistCard = ({
             color="text.secondary"
             sx={{
               mb: 2,
-              display: '-webkit-box',
+              display: "-webkit-box",
               WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden',
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
             }}
           >
             {playlist.description}
@@ -91,19 +102,21 @@ const PlaylistCard = ({
 
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
             mb: 1,
           }}
         >
-          <Typography variant="subtitle2">Songs ({playlist.songs.length})</Typography>
+          <Typography variant="subtitle2">
+            Songs ({playlist.songs.length})
+          </Typography>
           {playlist.songs.length > 0 && (
             <Button
               size="small"
               startIcon={<Add />}
               onClick={onAddSongs}
-              sx={{ textTransform: 'none' }}
+              sx={{ textTransform: "none" }}
             >
               Add More
             </Button>
@@ -111,12 +124,12 @@ const PlaylistCard = ({
         </Box>
 
         {playlist.songs.length > 0 ? (
-          <Box sx={{ maxHeight: 200, overflow: 'auto' }}>
+          <Box sx={{ maxHeight: 200, overflow: "auto" }}>
             {playlist.songs.map((song) => (
-              <SongItem 
-                key={song.id} 
-                song={song} 
-                onRemove={() => onRemoveSong(playlist._id, song.id)} 
+              <SongItem
+                key={song.songId}
+                song={song}
+                onRemove={() => onRemoveSong(playlist._id, song.songId)}
               />
             ))}
           </Box>
@@ -126,12 +139,12 @@ const PlaylistCard = ({
       </CardContent>
 
       {playlist.songs.length === 0 && (
-        <CardActions sx={{ justifyContent: 'center', p: 2 }}>
+        <CardActions sx={{ justifyContent: "center", p: 2 }}>
           <Button
             size="small"
             startIcon={<Add />}
             onClick={onAddSongs}
-            sx={{ width: '100%' }}
+            sx={{ width: "100%" }}
           >
             Add Songs
           </Button>
@@ -144,26 +157,26 @@ const PlaylistCard = ({
 const SongItem = ({ song, onRemove }) => (
   <Box
     sx={{
-      display: 'flex',
-      alignItems: 'center',
+      display: "flex",
+      alignItems: "center",
       mb: 1,
       p: 1,
       borderRadius: 1,
-      '&:hover': {
-        backgroundColor: 'action.hover',
-        '& .remove-btn': {
-          visibility: 'visible',
+      "&:hover": {
+        backgroundColor: "action.hover",
+        "& .remove-btn": {
+          visibility: "visible",
         },
       },
     }}
   >
     <Avatar
       sx={{
-        bgcolor: 'primary.main',
+        bgcolor: "primary.main",
         mr: 2,
         width: 32,
         height: 32,
-        color: 'primary.contrastText',
+        color: "primary.contrastText",
       }}
     >
       <MusicNote fontSize="small" />
@@ -172,9 +185,9 @@ const SongItem = ({ song, onRemove }) => (
       <Typography
         variant="body2"
         sx={{
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
         }}
       >
         {song.title}
@@ -183,10 +196,10 @@ const SongItem = ({ song, onRemove }) => (
         variant="caption"
         color="text.secondary"
         sx={{
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          display: 'block',
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          display: "block",
         }}
       >
         {song.artist}
@@ -198,9 +211,9 @@ const SongItem = ({ song, onRemove }) => (
         className="remove-btn"
         onClick={onRemove}
         sx={{
-          visibility: 'hidden',
-          '&:focus': {
-            visibility: 'visible',
+          visibility: "hidden",
+          "&:focus": {
+            visibility: "visible",
           },
         }}
       >
@@ -213,19 +226,19 @@ const SongItem = ({ song, onRemove }) => (
 const EmptyPlaylistState = ({ onAddSongs }) => (
   <Box
     sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
       p: 2,
-      textAlign: 'center',
+      textAlign: "center",
       height: 120,
-      justifyContent: 'center',
+      justifyContent: "center",
     }}
   >
     <PlaylistAdd
       sx={{
         fontSize: 40,
-        color: 'text.disabled',
+        color: "text.disabled",
         mb: 1,
         opacity: 0.6,
       }}

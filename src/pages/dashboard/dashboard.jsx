@@ -103,7 +103,7 @@ const Dashboard = () => {
               ? {
                   ...pl,
                   songs: pl.songs.filter(
-                    (song) => song.id !== deletingItem.songId
+                    (song) => song.songId !== deletingItem.songId
                   ),
                 }
               : pl
