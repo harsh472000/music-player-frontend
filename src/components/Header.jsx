@@ -15,8 +15,8 @@ import {
 import { cookieStorage } from "../utils/cookie";
 
 const Header = () => {
-    const theme = useTheme();
-    const navigate = useNavigate();
+  const theme = useTheme();
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -36,23 +36,37 @@ const Header = () => {
     handleClose();
   }
 
-   const userData = JSON.parse(cookieStorage.getItem("user_data"));
-  
+  const userData = JSON.parse(cookieStorage.getItem("user_data"));
   const userFirstName = userData ? userData.firstName : "Guest";
   const userLastName = userData ? userData.lastName : "";
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "background.paper" }}>
-      <Toolbar sx={{ justifyContent: "space-between" }}>
+    <AppBar 
+      position="fixed"  // Changed from 'static' to 'fixed'
+      sx={{ 
+        backgroundColor: "background.paper",
+        zIndex: theme.zIndex.drawer + 1,  // Ensure header stays above other content
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)"  // Optional: Add subtle shadow
+      }}
+    >
+      <Toolbar 
+        sx={{ 
+          justifyContent: "space-between",
+          minHeight: "64px"  // Ensure consistent height
+        }}
+      >
         {/* Left side - App Name */}
         <Typography 
           variant="h6" 
           component={Link} 
-          to="/"
+          to="/dashboard"
           sx={{ 
             textDecoration: "none",
             color: "text.primary",
-            fontWeight: "bold"
+            fontWeight: "bold",
+            "&:hover": {
+              color: "primary.main"  // Add hover effect
+            }
           }}
         >
           Music App
@@ -60,23 +74,39 @@ const Header = () => {
 
         {/* Right side - Navigation and Avatar */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          {/* Navigation Links */}
-          <Button 
-            component={Link} 
-            to="/dashboard" 
-            color="inherit"
-            sx={{ color: "text.primary" }}
-          >
-            Playlists
-          </Button>
-          <Button 
-            component={Link} 
-            to="/songs" 
-            color="inherit"
-            sx={{ color: "text.primary" }}
-          >
-            Songs
-          </Button>
+          {/* Navigation Links - Only show when user is logged in */}
+          {userData && (
+            <>
+              <Button 
+                component={Link} 
+                to="/dashboard" 
+                color="inherit"
+                sx={{ 
+                  color: "text.primary",
+                  "&:hover": {
+                    color: "primary.main",
+                    backgroundColor: "transparent"
+                  }
+                }}
+              >
+                Playlists
+              </Button>
+              <Button 
+                component={Link} 
+                to="/songs" 
+                color="inherit"
+                sx={{ 
+                  color: "text.primary",
+                  "&:hover": {
+                    color: "primary.main",
+                    backgroundColor: "transparent"
+                  }
+                }}
+              >
+                Songs
+              </Button>
+            </>
+          )}
 
           {/* Avatar with Menu */}
           <Avatar 
@@ -84,7 +114,11 @@ const Header = () => {
               bgcolor: theme.palette.primary.main,
               cursor: "pointer",
               width: 40,
-              height: 40
+              height: 40,
+              "&:hover": {
+                transform: "scale(1.05)",
+                transition: "transform 0.2s"
+              }
             }}
             onClick={handleClick}
           >
@@ -97,11 +131,12 @@ const Header = () => {
             onClose={handleClose}
             onClick={handleClose}
             PaperProps={{
-              elevation: 0,
+              elevation: 3,
               sx: {
                 overflow: 'visible',
                 filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
                 mt: 1.5,
+                minWidth: 200,
                 '& .MuiAvatar-root': {
                   width: 32,
                   height: 32,
@@ -126,10 +161,24 @@ const Header = () => {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={handleClose}>
-              <Avatar /> {userFirstName} {userLastName}
+              <Avatar /> 
+              <Box>
+                <Typography variant="subtitle2">{userFirstName} {userLastName}</Typography>
+                <Typography variant="caption" color="text.secondary">
+                  {userData?.email || ""}
+                </Typography>
+              </Box>
             </MenuItem>
             <Divider />
-            <MenuItem onClick={handleLogout} sx={{ color: "error.main" }}>
+            <MenuItem 
+              onClick={handleLogout} 
+              sx={{ 
+                color: "error.main",
+                "&:hover": {
+                  backgroundColor: "error.light"
+                }
+              }}
+            >
               Logout
             </MenuItem>
           </Menu>
